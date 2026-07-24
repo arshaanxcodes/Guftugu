@@ -91,4 +91,11 @@ if(window.self!==window.top){
                 },
             });
 
+const fab = document.getElementById("fab");
+const actions = document.getElementById("actions");
+
+fab.addEventListener("click",()=>{
+    actions.classList.toggle("open");
+    fab.classList.toggle("active");
+});
 // External script: https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496
