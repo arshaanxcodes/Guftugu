@@ -96,15 +96,36 @@
 
   /* ---------- hero ---------- */
   .hero{
-    padding: 64px 0 20px;
+    position: relative;
+    padding: 96px 0 64px;
     text-align:center;
-    position:relative;
+    overflow: hidden;
+    border-radius: 0 0 32px 32px;
+    isolation: isolate;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
   }
+  .hero-bg{
+    position:absolute; inset:0; z-index:-2;
+    background: linear-gradient(155deg, #E9C989, #C97a5c 55%, #8a5a42);
+  }
+  .hero-bg img{
+    position:absolute; inset:0;
+    width:100%; height:100%; object-fit:cover;
+  }
+  .hero-scrim{
+    position:absolute; inset:0; z-index:-1;
+    background:
+      linear-gradient(180deg, rgba(28,16,10,0.35) 0%, rgba(28,16,10,0.28) 40%, rgba(20,11,7,0.72) 100%),
+      linear-gradient(90deg, rgba(20,11,7,0.35), rgba(20,11,7,0) 45%, rgba(20,11,7,0) 55%, rgba(20,11,7,0.35));
+  }
+  .hero-content{ width:100%; }
   .eyebrow{
     font-size: 0.82rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--coffee-soft);
+    color: rgba(250,242,226,0.85);
     font-weight:600;
     margin-bottom: 18px;
   }
@@ -114,29 +135,34 @@
     font-size: clamp(2.6rem, 9vw, 5rem);
     line-height:1.05;
     margin: 0 0 6px;
-    color: var(--coffee);
+    color: #FFF8EC;
+    text-shadow: 0 6px 26px rgba(0,0,0,0.35);
   }
   .hero .latin-name{
     font-family:'Fraunces', serif;
     font-style: italic;
     font-weight: 500;
     font-size: clamp(1.2rem, 3.4vw, 1.7rem);
-    color: var(--brick);
+    color: var(--marigold);
     margin: 0 0 20px;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.3);
   }
   .hero .tagline{
     max-width: 460px;
     margin: 0 auto 26px;
-    color: var(--coffee-soft);
+    color: rgba(255,248,236,0.92);
     font-size: 1.02rem;
     line-height:1.55;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.28);
   }
   .rating-row{
     display:flex; align-items:center; justify-content:center; gap:10px;
     margin-bottom: 30px; flex-wrap:wrap;
   }
-  .stars{ color: var(--marigold-deep); font-size:1.05rem; letter-spacing:2px; }
-  .rating-num{ font-weight:700; }
+  .hero .stars{ color: var(--marigold); font-size:1.05rem; letter-spacing:2px; }
+  .hero .rating-num{ font-weight:700; color:#FFF8EC; }
+  .hero .rating-count{ color: rgba(255,248,236,0.85); font-size:0.9rem; }
+  .stars{ color: var(--marigold-deep); letter-spacing:2px; }
   .rating-count{ color: var(--coffee-soft); font-size:0.9rem; }
 
   .cta-row{
@@ -171,6 +197,12 @@
     border-color: var(--coffee);
     color: var(--coffee);
   }
+  .hero .btn-outline{
+    background: rgba(255,252,245,0.1);
+    border-color: rgba(255,252,245,0.6);
+    color: #FFF8EC;
+    backdrop-filter: blur(3px);
+  }
 
   .service-tags{
     display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
@@ -182,18 +214,12 @@
     border:1px solid var(--line);
     padding: 5px 12px; border-radius: 999px;
   }
-
-  .hero-photo{
-    position:relative;
-    max-width: 760px;
-    margin: 42px auto 0;
-    aspect-ratio: 16/8;
-    border-radius: 26px;
-    overflow:hidden;
-    background: linear-gradient(155deg, #E9C989, #C97a5c 55%, #8a5a42);
-    box-shadow: 0 30px 60px -30px rgba(44,27,18,0.45);
+  .hero .service-tags span{
+    background: rgba(255,252,245,0.12);
+    border-color: rgba(255,252,245,0.3);
+    color: #FFF8EC;
+    backdrop-filter: blur(3px);
   }
-  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
 
   /* ---------- section heads ---------- */
   section{ padding: 18px 0 6px; }
@@ -394,6 +420,7 @@
     .menu-grid{ grid-template-columns: 1fr 1fr; }
     .gallery-grid{ grid-template-columns: repeat(2,1fr); }
     .gallery-grid .tile:nth-child(1){ grid-column: span 2; grid-row: span 1; aspect-ratio: 16/10; height:auto; }
+    .hero{ min-height: 92vh; padding: 76px 0 48px; border-radius: 0 0 22px 22px; }
   }
 
   /* ---------- wandering cats ---------- */
